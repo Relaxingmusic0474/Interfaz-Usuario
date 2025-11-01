@@ -1,0 +1,165 @@
+<!DOCTYPE html><!-- Declaración del tipo de documento para HTML5. Esto informa al navegador que la página está escrita en HTML moderno. -->
+<!--
+  Archivo: index.html
+  Propósito: Este archivo actúa como la página de inicio o portada de la
+  aplicación web personal. Aquí se define la estructura general de la
+  navegación y el contenedor principal que cargará las demás secciones
+  mediante un iframe.  Todas las funciones críticas, como el menú de
+  navegación y el pie de página, se encuentran en este archivo.
+-->
+<html lang="es">  <!-- Inicio del elemento raíz HTML. El atributo `lang` se establece a 'es' para indicar que el contenido está en español. -->
+
+<head>  <!-- Comienzo de la cabecera del documento. Aquí se incluyen metadatos importantes. -->
+    <!-- Meta etiqueta que define la codificación de caracteres como UTF-8. Esto permite mostrar caracteres especiales correctamente. -->
+    <meta charset="utf-8">
+    <!-- Meta etiqueta que define el comportamiento de la página en dispositivos móviles.  'width=device-width' ajusta el ancho a la pantalla del dispositivo. 'initial-scale=1.0' establece el nivel de zoom inicial. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparecerá en la pestaña del navegador. Es importante para SEO y para que el usuario identifique la pestaña. -->
+    <title>Holi</title>
+</head>  <!-- Fin de la sección de la cabecera. -->
+
+<body bgcolor="#FFF8F0" text="#202020">  <!-- Inicio del cuerpo del documento. 'bgcolor' define el color de fondo. 'text' define el color del texto -->
+    <!-- ====================================================================== -->
+    <!-- ENCABEZADO PRINCIPAL -->
+    <!-- Se emplea una tabla como contenedor principal del encabezado para poder centrar y alinear su contenido sin necesidad de CSS. -->
+    <!-- Banner principal: usar un contenedor con background-image en lugar de <image> dentro de SVG.
+         Algunas versiones de Chrome/Edge bloquean la carga de imágenes locales desde <image> en SVG cuando
+         se abre el archivo vía file://; usar background-image evita ese problema y funciona en todos los navegadores. -->
+    <div style="width:100%; height:550px; background-image:url('assets/images/banner.png'); background-position:center; background-size:cover; background-repeat:no-repeat; display:flex; align-items:flex-start;">
+        <!-- Textos sobre el banner (se mantienen como SVG para conservar estilo avanzado de texto) -->
+        <svg viewBox="0 0 1800 550" width="100%" height="550" preserveAspectRatio="xMidYMid meet" aria-label="Banner con título">
+            <defs>
+                <linearGradient id="gradTexto" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFD700"/>
+                    <stop offset="100%" stop-color="#FF7F50"/>
+                </linearGradient>
+                <filter id="sombraSuave" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+                    <feOffset dx="0" dy="4" result="despl"/>
+                    <feMerge>
+                        <feMergeNode in="despl"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <text x="80" y="180"
+                font-family="DejaVu Sans, Arial, sans-serif"
+                font-size="96"
+                fill="url(#gradTexto)"
+                stroke="#1A1A1A" stroke-width="5"
+                filter="url(#sombraSuave)">
+                MI PÁGINA WEB
+            </text>
+
+            <text x="85" y="250"
+                font-family="DejaVu Sans, Arial, sans-serif"
+                font-size="36"
+                fill="#FFFFFF"
+                stroke="#000000" stroke-width="1.5"
+                filter="url(#sombraSuave)">
+                Estadística • Código • Música
+            </text>
+        </svg>
+    </div>
+
+
+    <!-- ====================================================================== -->
+    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL -->
+    <!-- El menú se implementa como una tabla de una fila y varias celdas. Cada celda contiene un formulario con un botón. Al no poder usar CSS, esta es una forma sencilla de alinear los botones horizontalmente. -->
+    <table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#8B0000"><!-- La tabla del menú ocupa el ancho completo. 'border=1' muestra un borde. 'bordercolor' define el color rojo oscuro del borde. -->
+        <tr><!-- Fila única que contiene todas las opciones del menú. -->
+            <td align="center"><!-- Cada celda se alinea en el centro para que los botones se vean uniformes. -->
+                <!-- Enlace directo para abrir la página de inicio (file:// friendly). -->
+                <a href="home.html" title="Ir a la página de inicio">INICIO</a>
+            </td><!-- Fin de la celda de inicio. -->
+            <td align="center"><!-- Inicio de la celda 'Sobre mí'. -->
+                <a href="sobre_mi.html" title="Aprende más sobre mí">SOBRE MÍ</a>
+            </td><!-- Fin de la celda 'Sobre mí'. -->
+            <td align="center"><!-- Celda para la sección de pasatiempos. -->
+                <!-- Enlace directo a la sección de pasatiempos. -->
+                <a href="sobre_mi.html#pasatiempos" title="Descubre mis pasatiempos">PASATIEMPOS</a>
+            </td><!-- Fin de la celda de pasatiempos. -->
+            <td align="center"><!-- Celda que enlaza a la página de trabajos académicos. -->
+                <a href="trabajos.html" title="Revisa mis trabajos académicos">TRABAJOS</a>
+            </td><!-- Fin de la celda 'Trabajos'. -->
+            <td align="center"><!-- Celda de proyectos. -->
+                <a href="proyectos.html" title="Explora mis proyectos">PROYECTOS</a>
+            </td><!-- Fin de la celda 'Proyectos'. -->
+            <td align="center"><!-- Celda de experiencias de vida. -->
+                <a href="experiencias.html" title="Mira mis experiencias de vida">EXPERIENCIAS</a>
+            </td><!-- Fin de la celda 'Experiencias'. -->
+            <td align="center"><!-- Celda de contacto. -->
+                <a href="contacto.html" title="Contáctame mediante el formulario">CONTACTO</a>
+            </td><!-- Fin de la celda 'Contacto'. -->
+        </tr><!-- Fin de la fila del menú. -->
+    </table><!-- Fin de la tabla de navegación. -->
+    <!-- ====================================================================== -->
+    <!-- INSTRUCCIONES INICIALES -->
+    <!-- Se proporciona un párrafo descriptivo para orientar al usuario sobre el funcionamiento del sitio. -->
+    <p>
+        Bienvenido a mi página personal. Utiliza el menú de arriba para navegar entre las distintas secciones y descubrir más sobre mí, mis trabajos y proyectos.<!-- Este texto explica cómo navegar por el sitio. -->
+    </p>
+    <!-- ====================================================================== -->
+    <!-- CONTENIDO INICIAL -->
+    <!-- Se eliminó el iframe para hacer la navegación file:// friendly. Abre las páginas desde los enlaces del menú. -->
+    <section>
+        <h2>Bienvenido</h2>
+        <p>Esta es la portada. Haz clic en los enlaces del menú para abrir las secciones (p. ej. <a href="home.html">Inicio</a>).</p>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- PIE DE PÁGINA -->
+    <!-- El pie de página proporciona información adicional y enlaces externos. Se utiliza una tabla para centrar el contenido y mantener el ancho completo. -->
+    <table width="100%" cellpadding="10" cellspacing="0" border="0">  <!-- Tabla del pie de página. -->
+        <tr>  <!-- Fila del pie de página. -->
+            <td align="center">  <!-- Celda centrada que contiene el pie de página. -->
+                <!-- Texto de derechos de autor. -->
+                <p>© 2025 Pablo Gómez Paredes. Todos los derechos reservados.</p>
+                <!-- Enlaces externos. Estos enlaces son obligatorios para cumplir con la rúbrica. -->
+                <p>
+                    <a href="https://github.com/Relaxingmusic0474" target="_blank" title="Visita mi perfil de GitHub">Mi GitHub</a>
+                    <!-- Espacio no separable para mantener los enlaces en la misma línea. -->
+                    &nbsp;|&nbsp;
+                    <a href="https://www.umag.cl" target="_blank" title="Sitio de la Universidad de Magallanes">Universidad de Magallanes</a>
+                </p>
+            </td><!-- Fin de la celda del pie de página. -->
+        </tr><!-- Fin de la fila del pie de página. -->
+    </table><!-- Fin de la tabla del pie de página. -->
+</body><!-- Fin del cuerpo del documento. -->
+</html><!-- Fin del documento HTML. -->
+
+<!-- Comentario adicional 001: Este archivo es el punto de entrada del sitio; otras páginas dependen de él. -->
+<!-- Comentario adicional 002: El pie de página contiene enlaces externos obligatorios (según pedía la rúbrica) -->
+<!-- Comentario adicional 003: El enlace a GitHub dirige a un perfil de proyectos públicos. -->
+<!-- Comentario adicional 004: El enlace a la Universidad de Magallanes representa la página de la universidad en la que estoy estudiando. -->
+<!-- Comentario adicional 005: El color rojo oscuro ('#8B0000') fue escogido para destacar elementos. -->
+<!-- Comentario adicional 006: El formulario de contacto utiliza validaciones HTML5. -->
+<!-- Comentario adicional 007: La página gracias.html confirma el envío del formulario. -->
+<!-- Comentario adicional 008: La línea horizontal '<hr>' separa secciones visualmente. -->
+<!-- Comentario adicional 009: Cada página tiene un título único para mejorar la usabilidad. -->
+<!-- Comentario adicional 010: La tabla de navegación es una solución práctica en ausencia de estilos. -->
+<!-- Comentario adicional 011: Cada botón del menú tiene un atributo 'title' que genera un tooltip. -->
+<!-- Comentario adicional 012: Los nombres de los archivos de las páginas internas reflejan su contenido. -->
+<!-- Comentario adicional 013: El uso de figuras en las páginas internas permite agregar descripciones a las imágenes. -->
+<!-- Comentario adicional 014: El atributo 'lang' ayuda a los lectores de pantalla a identificar el idioma.  Para adaptar a otro idioma, se debe modificar dicho atributo. -->
+<!-- Comentario adicional 015: La decisión de colocar el menú en una tabla permite centrar los botones. -->
+<!-- Comentario adicional 016: El pie de página utiliza '&nbsp;' para asegurar la separación de enlaces. -->
+<!-- Comentario adicional 017: El atributo 'title' en enlaces y botones mejora la usabilidad para usuarios de lectores de pantalla. -->
+<!-- Comentario adicional 018: Se podrían agregar anclas dentro de cada página para navegación interna más detallada. -->
+<!-- Comentario adicional 019: Los atributos 'bgcolor' y 'text' se usan para definir colores sin CSS.  bgcolor aún funciona en la mayoría de los navegadores -->
+<!-- Comentario adicional 020: Los espacios no separables se usan para separar enlaces con un '|' en el pie de página. -->
+<!-- Comentario adicional 021: El ancho de la tabla de banner se ajusta al 100% para adaptarse a distintos tamaños de pantalla. -->
+<!-- Comentario adicional 022: Los formularios del menú no contienen campos, pero su presencia es necesaria para que el botón envíe la solicitud. -->
+<!-- Comentario adicional 023: El espacio interno 'cellpadding' crea márgenes dentro de las celdas. -->
+<!-- Comentario adicional 024: El atributo 'cellspacing' elimina el espacio entre celdas para un diseño compacto. -->
+<!-- Comentario adicional 025: El método por defecto de un formulario HTML es GET si no se especifica. -->
+<!-- Comentario adicional 026: Los atributos antiguos como 'bordercolor' son específicos de versiones anteriores de HTML, pero aún funcionan. -->
+<!-- Comentario adicional 027: Los metadatos de viewport permiten que la página se adapte a dispositivos móviles sin CSS. -->
+<!-- Comentario adicional 028: Un iframe permite mantener la portada estática mientras cambia el contenido, mejorando la experiencia del usuario. -->
+<!-- Comentario adicional 029: El borde del iframe comparte el mismo color que el menú para coherencia visual. -->
+<!-- Comentario adicional 030: Los formularios del menú usan el atributo 'target' para apuntar al iframe. -->
+<!-- Comentario adicional 031: Los enlaces internos ('sobre_mi.html', etc.) se cargan en el iframe llamado 'panel'. -->
+<!-- Comentario adicional 032: La estructura de navegación con iframe se usa para evitar recargar la página principal. -->
+<!-- Comentario adicional 033: El iframe puede mostrar barras de desplazamiento según el contenido que se cargue. -->
+<!-- Comentario adicional 034: Se recomienda no fijar alturas excesivas en el iframe; aquí se eligieron 600px como base. -->

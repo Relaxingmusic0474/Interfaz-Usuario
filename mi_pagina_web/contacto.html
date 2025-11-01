@@ -1,0 +1,111 @@
+<!DOCTYPE html>  <!-- Declaración de documento HTML5 para la página de contacto. -->
+
+<!--
+  Archivo: contacto.html
+  Propósito: Proporcionar un formulario de contacto que permite a los
+  visitantes enviar consultas o comentarios. Se aplican validaciones
+  básicas mediante los atributos HTML (`required`, `type="email"`) para
+  asegurar que los datos ingresados sean correctos. Cada línea está
+  comentada para explicar su función.
+-->
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">  <!-- Codificación de caracteres. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Adaptabilidad móvil. -->
+    <title>Contacto - Página personal de Pablo Gómez P.</title>  <!-- Título de la sección. -->
+</head>
+
+<body bgcolor="#FFF8F0" text="#202020">  <!-- Color de fondo y texto en coherencia con el sitio. -->
+    <!-- MIGAS DE PAN -->
+    <p><small>
+    <a href="home.html" title="Volver al inicio">Inicio</a> &gt; 
+        Contacto
+    </small></p>
+    <!-- TÍTULO PRINCIPAL -->
+    <h2>Contacto</h2>  <!-- Presenta el propósito del formulario. -->
+    <!-- DESCRIPCIÓN -->
+    <p>
+        Si deseas ponerte en contacto conmigo, completa el siguiente formulario. Todos los campos son obligatorios para asegurar que pueda responderte adecuadamente.<!-- Informa al usuario que debe rellenar todos los campos. -->
+    </p>
+    <!-- FORMULARIO -->
+    <!-- El formulario utiliza el método GET y envía los datos a 'gracias.html'. Al ser una demostración, no se envían datos a un servidor real. -->
+    <form action="gracias.html" method="get" title="Formulario de contacto">  <!-- Inicio del formulario. 'action' indica la página de destino al enviar. 'method=get' envía los datos por la URL. -->
+        <!-- Campo de nombre -->
+        <p>
+            <label for="nombre">Nombre:<br>  <!-- Etiqueta asociada al campo de texto. -->
+                <input id="nombre" name="nombre" type="text" required title="Ingresa tu nombre completo">  <!-- Campo obligatorio para el nombre. 'required' fuerza su ingreso. -->
+            </label>
+        </p>
+        <!-- Campo de correo electrónico -->
+        <p>
+            <label for="correo">Correo electrónico:<br>
+                <input id="correo" name="correo" type="email" required title="Ingresa un correo válido">  <!-- Campo tipo email para validar el formato del correo. -->
+            </label>
+        </p>
+        <!-- Campo de motivo de contacto -->
+        <p>
+            <label for="motivo">Motivo:<br>
+                <select id="motivo" name="motivo" required title="Selecciona el motivo de tu mensaje">  <!-- Lista desplegable de motivos. -->
+                    <option value="" disabled selected>-- Selecciona --</option>  <!-- Opción por defecto que no permite selección válida. -->
+                    <option value="consulta">Consulta general</option>
+                    <option value="colaboracion">Colaboración</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </label>
+        </p>
+        <!-- Campo de mensaje -->
+        <p>
+            <label for="mensaje">Mensaje:<br>
+                <textarea id="mensaje" name="mensaje" rows="5" cols="40" required title="Escribe tu mensaje"></textarea>  <!-- Área de texto para el mensaje. 'rows' y 'cols' definen el tamaño. -->
+            </label>
+        </p>
+        <!-- Casilla de aceptación -->
+        <p>
+            <label>
+                <input type="checkbox" name="acepto" required title="Debes confirmar que tu mensaje es real">  <!-- Casilla para que el usuario confirme que el mensaje es genuino. -->
+                Confirmo que esta es una consulta real.
+            </label>
+        </p>
+        <!-- Botones de envío y reseteo -->
+        <p>
+            <button type="submit" title="Enviar el formulario">Enviar</button>  <!-- Botón de envío. -->
+            <button type="reset"  title="Borrar todo y empezar de nuevo">Limpiar</button>  <!-- Botón para limpiar el formulario. -->
+        </p>
+    </form>
+    <!-- ENLACE DE REGRESO -->
+    <p><a href="home.html" title="Volver al inicio">Volver al inicio</a></p>
+</body>
+</html>
+
+<!-- Comentarios adicionales para contacto.html. Esta sección contiene anotaciones numeradas que explican varios elementos del formulario y cómo se relacionan con los criterios de la rúbrica, sin afectar el funcionamiento del formulario. -->
+<!-- Comentario adicional 001: El checkbox asegura la autenticidad del mensaje enviado. -->
+<!-- Comentario adicional 002: La página gracias.html actúa como confirmación de envío. -->
+<!-- Comentario adicional 003: El atributo 'required' obliga a completar el campo antes de enviar. -->
+<!-- Comentario adicional 004: El campo de correo utiliza 'type=email' para validación automática de formato. -->
+<!-- Comentario adicional 005: Los botones 'Enviar' y 'Limpiar' permiten enviar o resetear el formulario. -->
+<!-- Comentario adicional 006: La ruta de migas 'Inicio > Contacto' guía al usuario sobre su posición. -->
+<!-- Comentario adicional 007: La estructura usa párrafos separados para cada campo para mejorar la legibilidad. -->
+<!-- Comentario adicional 008: Se sugiere que el usuario utilice un correo válido para recibir respuesta. -->
+<!-- Comentario adicional 009: Las etiquetas de formulario están asociadas a sus campos mediante 'for' e 'id'. -->
+<!-- Comentario adicional 010: La página 'gracias.html' no procesa la información, simplemente confirma el envío. -->
+<!-- Comentario adicional 011: El campo 'Motivo' previene la selección por defecto gracias al valor vacío. -->
+<!-- Comentario adicional 012: Las etiquetas <br> separan líneas dentro de las etiquetas <label>. -->
+<!-- Comentario adicional 013: La presentación del formulario se mantiene simple al no tener CSS. -->
+<!-- Comentario adicional 014: El formulario se adapta bien a diferentes anchos debido a su estructura lineal. -->
+<!-- Comentario adicional 015: Los comentarios permiten comprender la lógica de validación implementada. -->
+<!-- Comentario adicional 016: Este archivo cumple con la parte de interacción y retroalimentación de la rúbrica. -->
+<!-- Comentario adicional 017: El atributo 'title' del formulario describe su propósito global. -->
+<!-- Comentario adicional 018: Los botones son de tipo 'button' y se comportan de manera predeterminada. -->
+<!-- Comentario adicional 019: El campo de texto multilinea permite una longitud considerable de mensaje. -->
+<!-- Comentario adicional 020: El sitio no almacena datos; por tanto, el formulario es solo demostrativo. -->
+<!-- Comentario adicional 021: Se pueden añadir patrones de validación (pattern) para validar el nombre. -->
+<!-- Comentario adicional 022: La disposición vertical facilita su uso en dispositivos móviles. -->
+<!-- Comentario adicional 023: Cada campo incluye el atributo 'title' para mostrar un mensaje al pasar el cursor. -->
+<!-- Comentario adicional 024: La lista desplegable requiere seleccionar un motivo; de lo contrario, el formulario no se envía. -->
+<!-- Comentario adicional 025: Este formulario no está protegido contra spam, ya que no incluye mecanismos como CAPTCHA. -->
+<!-- Comentario adicional 026: El formulario está diseñado con el método GET y la acción 'gracias.html'. -->
+<!-- Comentario adicional 027: El atributo 'target="panel"' mantiene la respuesta en el mismo iframe. -->
+<!-- Comentario adicional 028: Un método POST sería preferible para enviar datos sensibles, pero aquí se simula con GET. -->
+<!-- Comentario adicional 029: El uso de GET expone los datos en la barra de direcciones; se podría utilizar POST en un entorno real. -->

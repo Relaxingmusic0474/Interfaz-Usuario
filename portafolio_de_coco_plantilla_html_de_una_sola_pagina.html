@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark">
+  <title>Pablo "Coco" Gómez — Portafolio</title>
+  <meta name="description" content="Portafolio personal de Pablo Gómez (Coco) — Estudiante de Ingeniería Civil Informática en la UMAG. Proyectos, habilidades y contacto." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐺</text></svg>">
+  <style>
+    /* ===============
+       Estilos base
+       =============== */
+    :root {
+      --bg: #ffffff;
+      --text: #111827; /* slate-900 */
+      --muted: #6b7280; /* slate-500 */
+      --primary: #2563eb; /* blue-600 */
+      --primary-contrast: #ffffff;
+      --card: #f3f4f6; /* slate-100 */
+      --border: #e5e7eb; /* slate-200 */
+      --shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1020;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --primary: #60a5fa;
+        --primary-contrast: #0b1020;
+        --card: #111827;
+        --border: #1f2937;
+        --shadow: 0 10px 20px rgba(0,0,0,.45);
+      }
+    }
+    /* Forzar tema oscuro/claro cuando data-theme = dark|light */
+    html[data-theme="dark"] {
+      --bg: #0b1020;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #60a5fa;
+      --primary-contrast: #0b1020;
+      --card: #111827;
+      --border: #1f2937;
+      --shadow: 0 10px 20px rgba(0,0,0,.45);
+    }
+    html[data-theme="light"] {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-contrast: #ffffff;
+      --card: #f3f4f6;
+      --border: #e5e7eb;
+      --shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 1100px; padding: 0 1.2rem; margin: 0 auto; }
+    .btn {
+      display: inline-block; padding: .75rem 1rem; border-radius: .8rem;
+      background: var(--primary); color: var(--primary-contrast); font-weight: 600;
+      box-shadow: var(--shadow); border: 1px solid transparent;
+    }
+    .btn.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn:hover { filter: brightness(1.05); }
+
+    /* ===============
+       Header / Nav
+       =============== */
+    header { position: sticky; top: 0; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in hsl, var(--bg) 80%, transparent); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .25px; }
+    .brand .logo { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    nav ul { display: flex; gap: 1rem; list-style: none; padding: 0; margin: 0; }
+    nav a { padding: .5rem .75rem; border-radius: .6rem; }
+    nav a:hover { background: var(--card); text-decoration: none; }
+    .theme-toggle { border: 1px solid var(--border); background: var(--card); border-radius: .6rem; padding: .45rem .6rem; cursor: pointer; }
+
+    /* ===============
+       Hero
+       =============== */
+    .hero { padding: 4rem 0 3rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero .title { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0; }
+    .hero .subtitle { color: var(--muted); margin-top: .5rem; }
+    .chiprow { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .chip { font-size: .85rem; padding: .35rem .6rem; border: 1px solid var(--border); background: var(--card); border-radius: 999px; }
+    .cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+
+    /* ===============
+       Secciones
+       =============== */
+    section { padding: 3rem 0; }
+    section h2 { font-size: clamp(1.4rem, 4vw, 2rem); margin: 0 0 1rem; }
+    .section-desc { color: var(--muted); margin-bottom: 1.2rem; }
+
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 720px) {
+      .hero { grid-template-columns: 1.3fr .7fr; align-items: center; }
+      .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+      .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 .5rem; font-size: 1.15rem; }
+    .card p { margin: 0 0 .75rem; }
+    .tagrow { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag { font-size: .8rem; padding: .2rem .5rem; background: color-mix(in hsl, var(--primary), white 75%); color: #0f172a; border-radius: .4rem; border: 1px solid var(--border); }
+
+    .about p { margin: .3rem 0 .9rem; }
+
+    /* ===============
+       Contacto
+       =============== */
+    .contact {
+      display: grid; gap: 1rem;
+    }
+    .contact .row { display: grid; gap: .6rem; }
+    .field { display: grid; gap: .25rem; }
+    .field input, .field textarea {
+      width: 100%; padding: .75rem .9rem; border-radius: .8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text);
+    }
+
+    footer { padding: 3rem 0 4rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* Accesibilidad/Utilidades */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip { position: absolute; left: -999px; }
+    .skip:focus { left: 1rem; top: 1rem; background: var(--card); padding: .5rem .75rem; border-radius: .5rem; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="principal">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🐺</div>
+        <span>Pablo “Coco” Gómez</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><button class="theme-toggle" id="themeBtn" aria-label="Cambiar tema" title="Cambiar tema">🌓</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="container">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="titulo">
+      <div>
+        <h1 id="titulo" class="title">Hola, soy <span style="white-space:nowrap">Coco 👋</span></h1>
+        <p class="subtitle">Estudiante de Ingeniería Civil Informática — UMAG (Punta Arenas, Chile). Me interesan la electrónica aplicada, UI/UX y la estadística.</p>
+        <div class="chiprow" aria-label="tecnologías">
+          <span class="chip">C/C++</span>
+          <span class="chip">Arduino</span>
+          <span class="chip">HTML + CSS + JS</span>
+          <span class="chip">Python</span>
+          <span class="chip">UI/UX</span>
+          <span class="chip">Estadística</span>
+        </div>
+        <div class="cta" role="group" aria-label="acciones principales">
+          <!-- TODO: Reemplaza href por el link real de tu CV (Drive/GitHub/etc.) -->
+          <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Descargar CV">Descargar CV</a>
+          <a class="btn secondary" href="mailto:pablo.gomez@ejemplo.com" aria-label="Enviar correo">Escríbeme</a>
+        </div>
+      </div>
+      <div>
+        <div class="card" aria-label="resumen">
+          <h3>Resumen</h3>
+          <p>Actualmente cursando <strong>Interfaz de Usuario (Prof. Peña)</strong>, <strong>Estadística II</strong> y talleres de <strong>Integración</strong> y <strong>Mantenimiento</strong>. Me gusta construir prototipos con buen diseño de interacción.</p>
+          <div class="tagrow" aria-label="intereses">
+            <span class="tag">Prototipado</span>
+            <span class="tag">Accesibilidad</span>
+            <span class="tag">Diseño centrado en el usuario</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SOBRE MÍ ================= -->
+    <section id="sobre-mi" class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">Sobre mí</h2>
+      <p>Hola, soy Pablo (Coco). Estudio en la <strong>Universidad de Magallanes</strong>. Me muevo entre la electrónica (Arduino), el desarrollo de interfaces y el análisis de datos. Disfruto convertir ideas en prototipos funcionales con foco en la experiencia de usuario.</p>
+      <p><em>Dato local:</em> vivo en Punta Arenas, así que diseño pensando en contextos reales: clima extremo, uso con guantes, y legibilidad en distintas luminosidades.</p>
+    </section>
+
+    <!-- ================= PROYECTOS ================= -->
+    <section id="proyectos" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Proyectos destacados</h2>
+      <p class="section-desc">Una selección breve. Cada tarjeta incluye objetivos de UX y la tecnología usada. (Puedes agregar más o cambiar el orden para lo que pida el profe Peña).</p>
+
+      <div class="grid cols-3">
+        <article class="card" aria-labelledby="p1">
+          <h3 id="p1">Respire Seguro — Detección de CO y humo</h3>
+          <p>Prototipo con <strong>Arduino Nano</strong>, sensores MQ-2/MQ-7, LCD I2C y buzzer con diseño de <strong>alertas claras</strong> (colores/sonidos) y calibración guiada.</p>
+          <ul>
+            <li>Diseño de interacción: umbrales, feedback visual/sonoro.</li>
+            <li>Accesibilidad: tipografías legibles y estado en texto.</li>
+          </ul>
+          <div class="tagrow">
+            <span class="tag">Arduino</span><span class="tag">UI de Alertas</span><span class="tag">Wokwi</span>
+          </div>
+          <!-- TODO: Reemplaza el href con tu repo o demo -->
+          <p><a href="#" target="_blank" rel="noopener">Ver código/detalles</a></p>
+        </article>
+
+        <article class="card" aria-labelledby="p2">
+          <h3 id="p2">La Odisea de Woofson — Juego en C/Allegro5</h3>
+          <p>Videojuego 2D con menús, ranking y sprites. En pausa, con plan de mejoras (scrolling, nuevas animaciones y ajustes de dificultad).</p>
+          <div class="tagrow">
+            <span class="tag">C</span><span class="tag">Allegro5</span><span class="tag">Game UX</span>
+          </div>
+          <p><a href="#" target="_blank" rel="noopener">Ver repositorio</a></p>
+        </article>
+
+        <article class="card" aria-labelledby="p3">
+          <h3 id="p3">Interfaces musicales — MIDI & DAWs</h3>
+          <p>Presentación comparativa entre interfaces <strong>no GUI</strong> (instrumentos MIDI) y <strong>GUI</strong> (DAWs), con análisis de mapeo y feedback.</p>
+          <div class="tagrow">
+            <span class="tag">MIDI</span><span class="tag">DAW</span><span class="tag">UX</span>
+          </div>
+          <p><a href="#" target="_blank" rel="noopener">Slides / demo</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= HABILIDADES ================= -->
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Habilidades</h2>
+      <div class="chiprow" aria-label="habilidades">
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">C/C++</span>
+        <span class="chip">Arduino</span>
+        <span class="chip">Python</span>
+        <span class="chip">Git</span>
+        <span class="chip">UI/UX</span>
+        <span class="chip">Estadística</span>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contacto</h2>
+      <div class="contact">
+        <div class="row">
+          <div class="field">
+            <label for="email">Correo</label>
+            <!-- TODO: pon tu correo real -->
+            <input id="email" type="email" value="pablo.gomez@ejemplo.com" readonly>
+          </div>
+          <div>
+            <button class="btn secondary" id="copyBtn">Copiar correo</button>
+            <!-- TODO: pon tu link real de LinkedIn/GitHub si quieres -->
+            <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <form class="row" action="mailto:pablo.gomez@ejemplo.com" method="post" enctype="text/plain">
+          <div class="field">
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" required placeholder="Escribe tu nombre">
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Escribe tu mensaje"></textarea>
+          </div>
+          <div>
+            <button class="btn" type="submit">Enviar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© <span id="year"></span> Pablo “Coco” Gómez · Hecho con HTML, CSS y un toque de JS · <a href="#titulo">Volver arriba</a></p>
+  </footer>
+
+  <script>
+    // Año automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copiar correo
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      navigator.clipboard.writeText(email).then(() => {
+        const old = document.getElementById('copyBtn').textContent;
+        document.getElementById('copyBtn').textContent = '¡Copiado!';
+        setTimeout(() => document.getElementById('copyBtn').textContent = old, 1200);
+      });
+    });
+
+    // Toggle de tema con preferencia persistente
+    const root = document.documentElement;
+    const key = 'coco-theme';
+    function applyTheme(value){
+      if (value === 'dark' || value === 'light') {
+        root.setAttribute('data-theme', value);
+      } else {
+        root.setAttribute('data-theme', 'auto');
+      }
+    }
+    const saved = localStorage.getItem(key);
+    applyTheme(saved || 'auto');
+
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : current === 'dark' ? 'auto' : 'light';
+      localStorage.setItem(key, next);
+      applyTheme(next);
+    });
+  </script>
+</body>
+</html>

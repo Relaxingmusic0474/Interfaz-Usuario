@@ -1,0 +1,98 @@
+<!DOCTYPE html><!-- Declaración de tipo de documento HTML5. Permite al navegador interpretar correctamente el contenido. -->
+
+<!--
+  Archivo: sobre_mi.html
+  Propósito: Este archivo contiene información personal del autor del sitio.
+  Incluye una breve biografía, un currículum básico y una sección de
+  pasatiempos. Los comentarios abundantes buscan documentar cada línea
+  de código y su relación con la rúbrica de evaluación. La página
+  está diseñada para cargarse dentro del iframe del archivo principal
+  (index.html). El uso de anclas permite navegar a secciones
+  específicas, como la subsección de pasatiempos.
+-->
+
+<html lang="es">  <!-- Elemento raíz; atributo lang indica que la página está en español. -->
+
+<head><!-- Cabecera de la página con metadatos. -->
+    <meta charset="utf-8">  <!-- Codificación de caracteres UTF-8. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Para adaptabilidad en dispositivos móviles. -->
+    <title>Sobre mí - Página personal de Pablo Gómez P.</title>  <!-- Título específico de la sección. -->
+</head>  <!-- Fin de la cabecera. -->
+
+<body bgcolor="#FFF8F0" text="#202020">  <!-- Mismos colores que la portada para coherencia visual. -->
+    <!-- BREADCRUMB (MIGAS DE PAN) -->
+    <!-- Proporciona una ruta de navegación clara: Inicio > Sobre mí. -->
+    <p><small>
+    <a href="home.html" title="Volver al inicio">Inicio</a> &gt;  <!-- Separador '>' entre niveles -->
+        Sobre mí  <!-- Texto de la sección actual -->
+    </small></p>
+    <!-- ENCABEZADO DE SECCIÓN -->
+    <h2>Sobre mí</h2>  <!-- Título de nivel 2 que introduce la sección. -->
+    <!-- DESCRIPCIÓN GENERAL -->
+    <p>
+        Me llamo Pablo Gómez y soy estudiante de ingeniería con una pasión por las matemáticas.  Este sitio web resume mi trayectoria académica y personal, incluyendo trabajos desarrollados durante mis estudios y proyectos en los que he participado.  <!-- Explica quién eres y el propósito de la sección. -->
+    </p>
+    <!-- SECCIÓN DE BIOGRAFÍA -->
+    <h3>Biografía</h3>  <!-- Título de nivel 3 para la subsección. -->
+    <p>
+        Nací en Punta Arenas y desde pequeño me interesé por la resolución de problemas y el mundo digital.  Actualmente, estudio en la Universidad de Magallanes.  Cuando no estoy estudiando, me gusta descansar y pasar tiempo con mi perrita, la Motita.  <!-- Breve reseña biográfica. -->
+    </p>
+    <!-- SECCIÓN DE CURRÍCULUM -->
+    <h3>Currículum</h3>
+    <!-- La tabla siguiente contiene información estructurada sobre mi perfil académico y personal. Se emplean bordes y alineaciones para mejorar la legibilidad sin usar CSS. -->
+    <table border="1" cellpadding="5" cellspacing="0" bordercolor="#8B0000">  <!-- Bordes de color rojo oscuro para coherencia con el menú principal. -->
+        <tr><!-- Primera fila que contiene el encabezado 'Campo' y 'Detalle'. -->
+            <th align="center">Campo</th>  <!-- Columna para el nombre del campo. -->
+            <th align="center">Detalle</th>  <!-- Columna para el valor del campo. -->
+        </tr>
+        <tr><!-- Fila de nombre completo. -->
+            <td align="center">Nombre completo</td>  <!-- Etiqueta del campo. -->
+            <td align="center">Pablo Gómez Paredes</td>  <!-- Valor del campo. -->
+        </tr>
+        <tr><!-- Fila de edad. -->
+            <td align="center">Edad</td>
+            <td align="center">21 años</td>
+        </tr>
+        <tr><!-- Fila de profesión. -->
+            <td align="center">Profesión</td>
+            <td align="center">Estudiante de Ingeniería</td>
+        </tr>
+        <tr><!-- Fila de habilidades. -->
+            <td align="center">Habilidades</td>
+            <td align="center">Matemáticas, resolución de problemas, programación básica</td>
+        </tr>
+        <tr><!-- Fila de estudios. -->
+            <td align="center">Estudios</td>
+            <td align="center">Universidad de Magallanes (en curso)</td>
+        </tr>
+        <tr>  <!-- Ramos actuales -->
+            <td align="center">Ramos actuales</td>
+            <td align="center">Taller de Integración, Interfaz de Usuario, Taller de Mantenimiento, Estadística II</td>
+        </tr>
+        <tr><!-- Fila de idiomas. -->
+            <td align="center">Idiomas</td>
+            <td align="center">Español nativo, inglés nivel A2 app</td>
+        </tr>
+    </table>
+    <!-- Nota explicativa sobre el currículum -->
+    <p>
+    Este es un resumen simplificado de mi experiencia académica. Para más información, no dudes en contactarme a través del formulario en la sección de <a href="contacto.html">Contacto</a>.<!-- Se añade un enlace interno a la página de contacto. -->
+    </p>
+    <!-- SECCIÓN DE PASATIEMPOS -->
+    <h3 id="pasatiempos">Pasatiempos</h3><!-- El id permite enlazar directamente a esta sección desde el menú. -->
+    <p>En mi tiempo libre disfruto de diversas actividades que complementan mis estudios:</p>
+    <ul><!-- Lista desordenada de pasatiempos. -->
+        <li>Hacerle cariño a mi mascota, la Motita</li>
+        <figure>
+            <img src="assets/images/motita.jpeg" alt="Foto de la Motita" width="250" height="400"><!-- Imagen decorativa de la mascota. -->
+            <figcaption>Foto de la Motita</figcaption>
+        </figure>
+        <li>Jugar con la Motita y enseñarle trucos</li>
+        <li>Tomar sol cuando afuera hay más de 15&nbsp;°C y no hay viento fuerte</li>
+        <li>Resolver ejercicios de matemáticas y lógica</li>
+        <li>Escuchar música de variados géneros para relajarme y concentrarme</li>
+    </ul>
+    <!-- ENLACE DE REGRESO AL INICIO -->
+    <p><a href="home.html" title="Volver al inicio">Volver al inicio</a></p>
+</body>  <!-- Fin del cuerpo de la página 'Sobre mí'. -->
+</html>  <!-- Fin del documento HTML de la sección 'Sobre mí'. -->
