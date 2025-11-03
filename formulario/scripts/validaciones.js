@@ -1,3 +1,4 @@
+/* ---------------------------------------- FUNCIONES PARA VALIDAR RUT ---------------------------------------- */
 function normalizarRut(rut)
 {
     // Convierte el RUT a una cadena de texto
@@ -64,6 +65,39 @@ function validarRutIngresado()
     if (!resultado) 
     {
         alert("El RUT es inválido.");
+        return false; // Evita el envío del formulario
+    }
+
+    return true; // Permite el envío del formulario
+}
+
+
+/* ------------------------ FUNCIONES PARA VALIDAR CONSISTENCIA ENTRE FECHA DE NACIMIENTO Y EDAD ------------------------- */
+function calcularEdad(fechaNacimiento) 
+{
+    const hoy = new Date();
+    const nacimiento = new Date(fechaNacimiento);
+
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();  // Calcula la diferencia de años
+    const mes = hoy.getMonth() - nacimiento.getMonth();  // Calcula la diferencia de meses
+
+    if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate()))  // Considera caso especial de cumpleaños no cumplido
+    {
+        edad--;
+    }
+    
+    return edad;
+}
+
+function validarConsistenciaEdadFecha()
+{
+    const fechaNacimiento = document.getElementById("fecha_nacimiento").value;
+    const edadIngresada = parseInt(document.getElementById("edad").value, 10);
+    const edadCalculada = calcularEdad(fechaNacimiento);
+
+    if (edadCalculada !== edadIngresada)
+    {
+        alert(`Ha mentido sobre su edad.  Según la fecha de nacimiento, su edad es ${edadCalculada} años.  No podrá continuar con el formulario de postulación.`);
         return false; // Evita el envío del formulario
     }
 
