@@ -12,13 +12,12 @@
 
 <body>
     <h1>Formulario de Postulación al INE</h1>
-    
 
     <section id="seccion1">
         <h2>Sección I: Datos personales</h2>
 
-        <form action="#" method="post" onsubmit="return validarRutIngresado()">  <!-- Llama a la función validarRUT al enviar el formulario -->
-            
+        <form action="#" method="post" onsubmit="return validarTodo()">  <!-- Llama a la función validarRUT al enviar el formulario -->
+
             <label for="nombre">Nombre (*):</label><br>
             <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" size="24" required><br><br>
 
@@ -37,10 +36,24 @@
             <label for="telefono">Teléfono (opcional):</label><br>
             <input type="tel" id="telefono" name="telefono" placeholder="Ej: +56 9 1234 5678" size="24"><br><br>
 
-            <!-- Campo de texto para mensaje adicional (quizá lo quite del formulario)
-            <label for="mensaje">Mensaje:</label><br>
-            <textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..." ></textarea><br><br>
-            -->
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+
+    <section id="seccion2">
+        <h2>Sección II: Motivaciones y detalles adicionales</h2>
+
+        <form action="#" method="post">
+
+            <label for="experiencia">¿Tiene experiencia previa en estadísticas? (*):</label><br>
+            <select id="experiencia" name="experiencia" required>
+                <option value="">Seleccione una opción</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select><br><br>
+
+            <label for="motivacion">¿Por qué desea postular al INE? (*):</label><br>
+            <textarea id="motivacion" name="motivacion" rows="4" cols="50" placeholder="Escriba su motivación aquí..." required></textarea><br><br>
 
             <input type="submit" value="Enviar">
         </form>

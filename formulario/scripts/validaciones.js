@@ -1,3 +1,33 @@
+/* ------------------------------------------- FUNCIONES DE BLOQUEO ------------------------------------------- */
+function bloquearYSalir(mensaje)  // Funciona como castigo para el usuario que miente en el RUT o la edad
+{
+    alert(mensaje);
+    
+    // 1) Intento “legal” de cierre
+    try 
+    {
+        window.open('', '_self');  // Ayuda en algunos navegadores
+        window.close();  // Intenta cerrar la ventana actual para evitar que el usuario rellene el formulario
+    } 
+    catch (e) 
+    {}
+
+    setTimeout(() => {
+    document.body.innerHTML =
+      '<h1>Acceso denegado</h1>' +
+      '<p>Se detectó inconsistencia en los datos declarados. ' +
+      'El formulario ha sido bloqueado.</p>';
+    
+    // Deshabilitar cualquier interacción residual
+    [...document.querySelectorAll('input,select,textarea,button,a')].forEach(el => {
+      el.disabled = true;
+      el.onclick = e => e.preventDefault();
+    });
+    }, 50);
+
+    return false;
+}
+
 /* ---------------------------------------- FUNCIONES PARA VALIDAR RUT ---------------------------------------- */
 function normalizarRut(rut)
 {
@@ -64,11 +94,21 @@ function validarRutIngresado()
     
     if (!resultado) 
     {
-        alert("El RUT es inválido.");
+        // alert("El RUT es inválido.");
         return false; // Evita el envío del formulario
     }
 
     return true; // Permite el envío del formulario
+}
+
+function validarRUToSegfault() 
+{
+    if (!validarRutIngresado()) 
+    {
+        return bloquearYSalir('RUT inválido. Se le bloqueará el acceso al formulario por mentiroso.');
+    }
+
+    return true;
 }
 
 
@@ -95,12 +135,26 @@ function validarConsistenciaEdadFecha()
     const edadIngresada = parseInt(document.getElementById("edad").value, 10);
     const edadCalculada = calcularEdad(fechaNacimiento);
 
-    if (edadCalculada !== edadIngresada)
+    if (!isFinite(edadCalculada) || edadCalculada !== edadIngresada)
     {
-        alert(`Ha mentido sobre su edad.  Según la fecha de nacimiento, su edad es ${edadCalculada} años.  No podrá continuar con el formulario de postulación.`);
-        window.location.href = "https://www.ine.cl";  // Redirige al usuario fuera del formulario
-        return false; // Evita el envío del formulario
+        return bloquearYSalir(`Según la fecha de nacimiento que ingresó, su edad es ${edadCalculada} años.  Se le bloqueará el acceso al formulario por mentiroso.`);
     }
 
     return true; // Permite el envío del formulario
+}
+
+/* ---------------------------------------- FUNCIONES PARA VALIDAR TODO ---------------------------------------- */
+function validarTodo()
+{
+    if (!validarRUToSegfault())
+    {
+        return false;
+    }
+
+    if (!validarConsistenciaEdadFecha())
+    {
+        return false;
+    }
+
+    return true;
 }
