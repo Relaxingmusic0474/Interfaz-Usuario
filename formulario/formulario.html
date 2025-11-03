@@ -13,34 +13,38 @@
 <body>
     <h1>Formulario de Postulación al INE</h1>
     
-    
-    
-    <form action="#" method="post" onsubmit="return validarRutIngresado()">  <!-- Llama a la función validarRUT al enviar el formulario -->
-        <h2>Información Personal</h2>
 
-        <label for="nombre">Nombre (*):</label><br>
-        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" size="24" required><br><br>
+    <section id="seccion1">
+        <h2>Sección I: Datos personales</h2>
 
-        <label for="edad">Edad (*):</label><br>
-        <input type="number" id="edad" name="edad" min="18" max="120" placeholder="Ej: 24 (debe ser mayor de 18)" size="22" required><br><br>
+        <form action="#" method="post" onsubmit="return validarRutIngresado()">  <!-- Llama a la función validarRUT al enviar el formulario -->
+            
+            <label for="nombre">Nombre (*):</label><br>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" size="24" required><br><br>
 
-        <label for="fecha de nacimiento">Fecha de Nacimiento (*):</label><br>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Ej: 01/01/2001" style="width: 27ch;" required><br><br>
+            <label for="edad">Edad (*):</label><br>
+            <input type="number" id="edad" name="edad" min="18" max="120" placeholder="Ej: 24 (debe ser mayor de 18)" size="22" required><br><br>
 
-        <label for="rut">RUT (*):</label><br>
-        <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" size="22" required><br><br>
+            <label for="fecha de nacimiento">Fecha de Nacimiento (*):</label><br>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Ej: 01/01/2001" style="width: 27ch;" required><br><br>
 
-        <label for="telefono">Teléfono (*):</label><br>
-        <input type="tel" id="telefono" name="telefono" placeholder="Ej: +56 9 1234 5678" size="22" required><br><br>
+            <label for="rut">RUT (*):</label><br>
+            <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" size="24" required><br><br>
+        
+            <label for="email">Correo Electrónico (*):</label><br>
+            <input type="email" id="email" name="email" placeholder="Ej: juan.perez@gmail.com" size="24" required><br><br>
 
-        <label for="email">Correo Electrónico (*):</label><br>
-        <input type="email" id="email" name="email" placeholder="Ej: juan.perez@gmail.com" size="24" required><br><br>
+            <label for="telefono">Teléfono (opcional):</label><br>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej: +56 9 1234 5678" size="24"><br><br>
 
-        <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..." ></textarea><br><br>
+            <!-- Campo de texto para mensaje adicional (quizá lo quite del formulario)
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..." ></textarea><br><br>
+            -->
 
-        <input type="submit" value="Enviar">
-    </form>
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
     
     <h1>Símbolos matemáticos en HTML</h1>
     <p>A continuación se muestran algunos símbolos matemáticos comunes y su representación en HTML:</p>

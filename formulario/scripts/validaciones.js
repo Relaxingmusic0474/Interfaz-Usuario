@@ -98,6 +98,7 @@ function validarConsistenciaEdadFecha()
     if (edadCalculada !== edadIngresada)
     {
         alert(`Ha mentido sobre su edad.  Según la fecha de nacimiento, su edad es ${edadCalculada} años.  No podrá continuar con el formulario de postulación.`);
+        window.location.href = "https://www.ine.cl";  // Redirige al usuario fuera del formulario
         return false; // Evita el envío del formulario
     }
 
