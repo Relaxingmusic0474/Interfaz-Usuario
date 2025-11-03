@@ -1,17 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="es">  <!-- Lenguaje español -->
 
 <head>
     <meta charset="UTF-8">  <!-- Permite acentos y caracteres extraños del español -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Adaptable a dispositivos móviles -->
     <title>Formulario de Postulación al INE</title>
+    <script src="scripts/validar_rut.js"></script>
     <!--<link rel="stylesheet" href="styles.css">-->
 </head>
 
 <body>
     <h1>Formulario de Postulación al INE</h1>
-
-    <form action="#" method="post">
+    
+    
+    
+    <form action="#" method="post" onsubmit="return validarRutIngresado()">  <!-- Llama a la función validarRUT al enviar el formulario -->
         <h2>Información Personal</h2>
 
         <label for="nombre">Nombre (*):</label><br>
@@ -23,8 +27,8 @@
         <label for="fecha de nacimiento">Fecha de Nacimiento (*):</label><br>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Ej: 01/01/2001" style="width: 27ch;" required><br><br>
 
-        <label for="direccion">Dirección (*):</label><br>
-        <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Siempre Viva 742" size="24" required><br><br>
+        <label for="rut">RUT (*):</label><br>
+        <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" size="22" required><br><br>
 
         <label for="telefono">Teléfono (*):</label><br>
         <input type="tel" id="telefono" name="telefono" placeholder="Ej: +56 9 1234 5678" size="22" required><br><br>
@@ -33,11 +37,11 @@
         <input type="email" id="email" name="email" placeholder="Ej: juan.perez@gmail.com" size="24" required><br><br>
 
         <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..." required></textarea><br><br>
+        <textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..." ></textarea><br><br>
 
         <input type="submit" value="Enviar">
     </form>
-
+    
     <h1>Símbolos matemáticos en HTML</h1>
     <p>A continuación se muestran algunos símbolos matemáticos comunes y su representación en HTML:</p>
     <ul>
@@ -51,8 +55,5 @@
 
         <li>Integral definida: <code>&int;_a^b</code> f(x) dx</li>
     </ul>
-
-    <script src="scripts/validar_rut.js"></script>
-
 </body>
 </html>

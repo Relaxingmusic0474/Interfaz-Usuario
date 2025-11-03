@@ -1,12 +1,31 @@
+function normalizarRut(rut)
+{
+    // Convierte el RUT a una cadena de texto
+    rut = String(rut);
+
+    // Eliminar puntos y guiones, y convertir a mayúsculas (k != K)
+    rut = rut.replace(/\./g, "");
+    rut = rut.toUpperCase();
+
+    // Quita posibles espacios en blanco al inicio y al final
+    rut = rut.trim();
+
+    return rut;
+}
+
 function validarRutChileno(rut)
 {
-    // Eliminar puntos y guiones (si los hay)
-    rut = rut.replace(/\./g, "").replace(/-/g, "");
+    rut = normalizarRut(rut);
+
+    // Verificar formato básico
+    if (!/^\d{1,8}-[\dK]$/.test(rut)) 
+    {
+        return false;
+    }
 
     // Separar el cuerpo y el dígito verificador
-    const partes = rut.split('-');
-    const numero = partes[0];
-    const dv_teorico = partes[1].toUpperCase();
+    const numero = rut.slice(0, -2);
+    const dv_teorico = rut.slice(-1);
 
     // Calcular el dígito verificador
     let multiplicadores = [2, 3, 4, 5, 6, 7];
@@ -37,4 +56,16 @@ function validarRutChileno(rut)
     return dv_experimental === dv_teorico;
 }
 
-validarRutChileno()
+function validarRutIngresado()
+{
+    const rut = document.getElementById("rut").value;
+    const resultado = validarRutChileno(rut);
+    
+    if (!resultado) 
+    {
+        alert("El RUT es inválido.");
+        return false; // Evita el envío del formulario
+    }
+
+    return true; // Permite el envío del formulario
+}
