@@ -13,14 +13,27 @@
 
     <form action="#" method="post">
         <h2>Información Personal</h2>
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
 
-        <label for="email">Correo Electrónico:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <label for="nombre">Nombre (*):</label><br>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" size="24" required><br><br>
+
+        <label for="edad">Edad (*):</label><br>
+        <input type="number" id="edad" name="edad" min="18" max="120" placeholder="Ej: 24 (debe ser mayor de 18)" size="22" required><br><br>
+
+        <label for="fecha de nacimiento">Fecha de Nacimiento (*):</label><br>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Ej: 01/01/2001" style="width: 27ch;" required><br><br>
+
+        <label for="direccion">Dirección (*):</label><br>
+        <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Siempre Viva 742" size="24" required><br><br>
+
+        <label for="telefono">Teléfono (*):</label><br>
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej: +56 9 1234 5678" size="22" required><br><br>
+
+        <label for="email">Correo Electrónico (*):</label><br>
+        <input type="email" id="email" name="email" placeholder="Ej: juan.perez@gmail.com" size="24" required><br><br>
 
         <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
+        <textarea id="mensaje" name="mensaje" rows="4" cols="50" placeholder="Escribe tu mensaje aquí..." required></textarea><br><br>
 
         <input type="submit" value="Enviar">
     </form>
@@ -39,8 +52,7 @@
         <li>Integral definida: <code>&int;_a^b</code> f(x) dx</li>
     </ul>
 
+    <script src="scripts/validar_rut.js"></script>
+
 </body>
-
-
-
 </html>
