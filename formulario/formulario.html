@@ -1,3 +1,12 @@
+<script>  // Nota: Utilicé el comentario dentro de la etiqueta <script> únicamente porque me es más cómodo comentar de esa forma.
+    /*
+    Nombre: Pablo Gómez P.
+    Fecha de entrega: 07/11/2025
+    Título del formulario: Formulario de Postulación al INE
+    Descripción: Formulario web para postular al Instituto Nacional de Estadísticas (INE) de Chile, con validaciones de campos y un menú de progreso.
+    */
+</script>
+
 <!DOCTYPE html>
 
 <html lang="es">  <!-- Lenguaje español -->
@@ -6,12 +15,25 @@
     <meta charset="UTF-8">  <!-- Permite acentos y caracteres extraños del español -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Adaptable a dispositivos móviles -->
     <title>Formulario de Postulación al INE</title>
+    <style>
+        body
+        {
+            background: linear-gradient(to bottom, /*#87CEEB*/ #B3EBF2, #FFCEE6);  /* Fondo degradado de azul suave a rosa suave */
+        }
+    </style>
     <script src="scripts/validaciones.js"></script>
-    <!--<link rel="stylesheet" href="styles.css">-->
 </head>
 
 <body>
-    <h1>Formulario de Postulación al INE</h1>
+
+    <!-- Menú de progreso -->
+    <nav>
+        <button id="btn1" class="activo" onclick="irA(1)">1 · Datos personales</button>
+        <button id="btn2" onclick="irA(2)">2 · Motivación</button>
+        <button id="btn3" onclick="irA(3)">3 · Quiz final</button>
+    </nav>
+
+    <h1><u>Formulario de Postulación al INE</u></h1>
 
     <section id="seccion1">
         <h2>Sección I: Datos personales</h2>
@@ -30,11 +52,32 @@
             <label for="rut">RUT (*):</label><br>
             <input type="text" id="rut" name="rut" placeholder="Ej: 12.345.678-9" size="24" required><br><br>
         
+            <label for="region">Región de residencia (*):</label><br>
+            <select id="region" name="region" required>
+                <option value="">Seleccione su región</option>
+                <option value="">XV. Región de Arica y Parinacota</option>
+                <option value="">I. Región de Tarapacá</option>
+                <option value="">II. Región de Antofagasta</option>
+                <option value="">III. Región de Atacama</option>
+                <option value="">IV. Región de Coquimbo</option>
+                <option value="">V. Región de Valparaíso</option>
+                <option value="">XIII. Región Metropolitana de Santiago</option>
+                <option value="">VI. Región del Libertador Gral Bernardo O'Higgins</option>
+                <option value="">VII. Región del Maule</option>
+                <option value="">XVI. Región del Ñuble</option>
+                <option value="">VIII. Región del Biobío</option>
+                <option value="">IX. Región de La Araucanía</option>
+                <option value="">XIV. Región de Los Ríos</option>
+                <option value="">X. Región de Los Lagos</option>
+                <option value="">XI. Región de Aysén del Gral Carlos Ibáñez del Campo</option>
+                <option value="">XII. Región de Magallanes y de la Antártica Chilena</option>
+            </select><br><br>
+
             <label for="email">Correo Electrónico (*):</label><br>
             <input type="email" id="email" name="email" placeholder="Ej: juan.perez@gmail.com" size="24" required><br><br>
 
             <label for="telefono">Teléfono (opcional):</label><br>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ej: +56 9 1234 5678" size="24"><br><br>
+            <input type="tel" id="telefono" name="telefono" pattern="^\+56 9 \d{4} \d{4}$" placeholder="Ej: +56 9 1234 5678" size="24"><br><br>
 
             <input type="submit" value="Enviar">
         </form>
