@@ -101,6 +101,162 @@
             <input type="submit" value="Enviar">
         </form>
     </section>
+
+    <section id="seccion3">
+        <h2>Sección III: Quiz final de Estadística</h2>
+
+        <p>
+            Responda las siguientes preguntas para completar su postulación al INE.  Necesitará conocimientos básicos de estadística.
+        </p>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 1</h4></legend>
+                <p>El cuerpo de Carabineros ha recibido aproximadamente 13000 llamadas este último año, de las cuales 2600 han sido pitanzas.  ¿Cuál es la probabilidad de que de las próximas 10 llamadas, al menos 3 sean pitanzas?</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q1" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p><i>bin(3; 10, 0.2)</i></p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q1" data-correct="true">
+                    <span>&#160;B)&#160;&#160;</span>
+                    <img src="./images/formulas/formula1.svg" alt="1 menos la suma desde 0 a 2 de la binomial con parámetros n=10 y p=0.2"/>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q1" data-correct="false">
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p><i>h(3; N=13000, k=2600, n=10)</i></p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q1" data-correct="false">
+                    <span>&#160;D)&#160;&#160;</span>
+                    <img src="./images/formulas/formula2.svg" alt="La suma de 3 a 10 de la hipergeométrica con parámetros N=13000, k=2600 y n=10"/>
+                </label>
+                <br><input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+        
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 2</h4></legend>
+                <p>Suponiendo que en Punta Arenas, las temperaturas máximas diarias (T) a lo largo de un año promedio, siguen una distribución normal con μ=9.3° y  σ=6.4°. ¿Cuál(es) de las siguientes afirmaciones es(son) correcta(s)? <br>
+                    <i>Observación: Marque todas las opciones que considere como correctas.</i></p>
+                <label style="display: flex; align-items: center;">
+                    <input type="checkbox" name="q2" data-correct="true"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>Aproximadamente el 68% de los días de un año normal, se esperarían máximas entre 2.9° y 15.7°.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="checkbox" name="q2" data-correct="true"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>Aproximadamente solo el 16% de los días dentro de un año, se esperaría tener máximas superiores a 15.7°.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="checkbox" name="q2" data-correct="false"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>μ-σ representaría el primer cuartil de los datos, y μ+σ el tercer cuartil.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="checkbox" name="q2" data-correct="true"> 
+                    <span>&#160;D)&#160;</span>
+                    <img src="./images/formulas/formula3.svg" alt="La probabilidad de que T esté entre A y B es igual a Phi de (b-9.3)/6.4 menos Phi de (a-9.3)/6.4"/>
+                </label>
+                <br><input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 3</h4></legend>
+                <p>¿En cuál de los siguientes contextos NO sería apropiado utilizar una distribución uniforme para analizar los datos?</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q3" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>Generación de números pseudoaleatorios entre A y B en un programa de computadora.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q3" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>Ángulos en radianes (respecto a una misma línea de referencia) en el cual se pueden presentar la primera falla en neumáticos buenos de cierta marca.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q3" data-correct="false"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>En tablas hash que emplean arreglos de listas enlazadas, para modelar la probabilidad de que cierto número caiga en un cierto índice del arreglo.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q3" data-correct="true"> 
+                    <span>&#160;D)&#160;</span>
+                    <p>Cantidad de calorías diarias que consumen las personas.</p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 4</h4></legend>
+                <p>¿Para qué se utiliza la distribución Gamma?</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q4" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>Para analizar y modelar fenómenos con tendencia central como la estatura de las personas. </p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q4" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>Para analizar y modelar el tiempo de vida de componentes electrónicos con tasas de fallo que varían con el tiempo.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q4" data-correct="true"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>Para analizar y modelar los tiempos en que tarda en producirse el k-ésimo evento Poisson.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q4" data-correct="false"> 
+                    <span>&#160;D)&#160;</span>
+                    <p>Para analizar y modelar el número de eventos con tasa de ocurrencia constante que ocurren dentro de una ventana de tiempo. </p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 5</h4></legend>
+                <p>En un hospital clínico se hizo un estudio cómo afectaba la cantidad de horas de sueño diarias con el desarrollo del cáncer. Si se obtuvo que el 40% de las personas duerme en general al menos 7 horas diarias, y que de ese grupo, solo el 10% presenta algún tipo de cáncer.
+                    Y del otro grupo, el 25% presenta algún tipo de cáncer.  ¿Cuál de las siguientes expresiones representa la probabilidad de que al seleccionar a álguien con cáncer, duerma menos de 7 horas diarias?
+                </p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q5" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <img src="./images/formulas/formula4.svg" alt="(0.25)(0.60)/((0.10)(0.40) + (0.25)(0.60))"/>
+                </label><br>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q5" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <img src="./images/formulas/formula5.svg" alt="(0.10)(0.40)/((0.10)(0.40) + (0.25)(0.60))"/>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q5" data-correct="true"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>0.25</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q5" data-correct="false"> 
+                    <span>&#160;D)&#160;</span>
+                    <p></p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+
+
+
+
+    </section>
     
     <h1>Símbolos matemáticos en HTML</h1>
     <p>A continuación se muestran algunos símbolos matemáticos comunes y su representación en HTML:</p>
