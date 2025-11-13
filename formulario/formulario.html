@@ -32,7 +32,7 @@
     <section id="seccion1" class="form-seccion activa">
         <h2>Sección I: Datos personales</h2>
 
-        <form action="#" method="post" onsubmit="return validarTodoSeccion1()">  <!-- Llama a la función validarRUT al enviar el formulario -->
+        <form action="#" method="post">  <!-- Llama a la función validarRUT al enviar el formulario -->
 
             <label for="nombre">Nombre (*):</label><br>
             <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" size="24" required><br><br>
@@ -76,7 +76,7 @@
             <label for="web">Sitio web personal o LinkedIn (opcional):</label><br>
             <input type="url" id="web" name="web" placeholder="Ej: https://miportafolio.cl" size="24">
 
-            <br><br><br>
+            <br><br><br><br>
             
             <div class="nav-interno" style="text-align: right;">
                 <span></span> 
@@ -112,7 +112,7 @@
             <small>😒&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;😍</small><br><br><br>
 
             <label for="motivacion">¿Por qué desea postular al INE? (*):</label><br>
-            <textarea id="motivacion" name="motivacion" rows="4" cols="50" placeholder="Escriba su motivación aquí..." required></textarea><br><br>
+            <textarea id="motivacion" name="motivacion" rows="4" cols="50" placeholder="Escriba su motivación aquí..." required></textarea><br><br><br>
 
             <label for="disponibilidad">¿En qué horario(s) podría trabajar en caso de que se apruebe su postulación? (*)</label><br>
             <small>Seleccione al menos uno</small><br>
@@ -131,8 +131,6 @@
                 <input type="checkbox" name="horario"> 
                 <p>Noche (7:00 PM - 11:30 PM)</p>
             </label>
-            
-            <input type="submit" value="Enviar">
 
             <br><br>
 
@@ -140,7 +138,6 @@
                 <button type="button" class="boton-grande" onclick="irA(1)">← Anterior</button>
                 <button type="button" class="boton-grande" onclick="siguiente(2)">Siguiente ➜</button>
             </div>
-
         </form>
     </section>
 
@@ -178,7 +175,6 @@
                 <br><input type="reset" value="Limpiar">
             </fieldset>
         </form>
-        
 
         <form>
             <fieldset>
@@ -249,7 +245,7 @@
                 <label style="display: flex; align-items: center;">
                     <input type="radio" name="q4" data-correct="false"> 
                     <span>&#160;B)&#160;&#160;</span>
-                    <p>Para analizar y modelar el tiempo de vida de componentes electrónicos con tasas de fallo que varían con el tiempo.</p>
+                    <p>Para analizar y modelar la probabilidad de que en una serie de n experimentos Bernoulli, haya k éxitos.</p>
                 </label>
                 <label style="display: flex; align-items: center;">
                     <input type="radio" name="q4" data-correct="true"> 
@@ -323,23 +319,133 @@
                 <br><input type="reset" value="Limpiar">
             </fieldset>
         </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 7</h4></legend>
+                <p>¿Cuál de los siguientes, NO es un método para detectar <i>outliers</i>, también conocidos como "valores atípicos"?</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q7" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>LOF.</p>
+                    <p></p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q7" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>Isolation Forest.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q7" data-correct="true"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>Método de la bisección.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q7" data-correct="false"> 
+                    <span>&#160;D)&#160;</span>
+                    <p>Método mediante <i>boxplots</i> utilizando el IQR.</p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+                </label>
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 8</h4></legend>
+                <p>¿Cuál es la media aritmética entre 10, 13, 14, 23 y 30?</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q8" data-correct="true"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>18</p>
+                    <p></p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q8" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>14</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q8" data-correct="false"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>16</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q8" data-correct="false"> 
+                    <span>&#160;D)&#160;</span>
+                    <p>20</p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+                </label>
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 9</h4></legend>
+                <p>La curtosis es una medida estadística relacionada con...</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q9" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>La dispersión de los datos.</p>
+                    <p></p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q9" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>La incertidumbre o impredicibilidad de los datos.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q9" data-correct="false"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>La uniformidad de los datos.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q9" data-correct="true"> 
+                    <span>&#160;D)&#160;</span>
+                    <p>La densidad de los valores atípicos <i>(outliers)</i>.</p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+                </label>
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend><h4>Pregunta 10</h4></legend>
+                <p>Una forma de estimar parámetros poblacionales es utilizando lo que se conoce como <strong>intervalos de confianza</strong>. &#160; 
+                    En esa línea, si usted quisiera estimar el valor de la media poblacional de un determinado descriptor, sin conocer su varianza poblacional, 
+                    ¿qué distribución utilizaría para obtener la incertidumbre del rango más plausible para la media poblacional?</p>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q10" data-correct="false"> 
+                    <span>&#160;A)&#160;&#160;</span>
+                    <p>Distribución normal.</p>
+                    <p></p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q10" data-correct="false"> 
+                    <span>&#160;B)&#160;&#160;</span>
+                    <p>Distribución X².</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q10" data-correct="true"> 
+                    <span>&#160;C)&#160;&#160;</span>
+                    <p>Distribución t de Student.</p>
+                </label>
+                <label style="display: flex; align-items: center;">
+                    <input type="radio" name="q10" data-correct="false"> 
+                    <span>&#160;D)&#160;</span>
+                    <p>Distribución exponencial.</p>
+                </label>
+                <br><input type="reset" value="Limpiar">
+                </label>
+            </fieldset>
+        </form>
+
+        <div class="nav-interno" style="text-align: left;">
+            <span></span> 
+            <button type="button" class="boton-grande" onclick="irA(2)">← Anterior</button>
+        </div>
     </section>
-    
-    <!--
-    <h1>Símbolos matemáticos en HTML</h1>
-    <p>A continuación se muestran algunos símbolos matemáticos comunes y su representación en HTML:</p>
-    <ul>
-        <li>Sumatoria: <code>&#8721;</code></li>
-        <li>Integral: <var>&int;</var> <sub>4</sub> <sup>5</sup> f(x) dx = F(5) - F(4)</li>
-        <li>Raíz cuadrada: <code>&Sqrt;</code></li>
-        <li>Menor que: <code>&#60;</code></li>
-        <li>Mayor que: <code>&#62;</code></li>
-        <li>Pi: <code>&pi;</code></li>
-        <li>Infinito: <code>&infin;</code></li>
-
-        <li>Integral definida: <code>&int;_a^b</code> f(x) dx</li>
-    </ul>
-    -->
-
 </body>
 </html>

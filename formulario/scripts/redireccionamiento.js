@@ -72,3 +72,28 @@ function siguiente(seccionActual)
     irA(seccionActual+1);  // Si todo está OK, ahora sí se pasa a la otra sección
     return true;
 }
+
+// PARA CALCULAR PUNTAJE DEL QUIZ (SECCIÓN 3)
+function calcularPuntajeQuiz() 
+{
+    let puntaje = 0;
+
+    // Se seleccionan todos los inputs marcados como correctos
+    const respuestasCorrectas = document.querySelectorAll("input[data-correct='true']");
+
+    respuestasCorrectas.forEach(correcta => {
+        const name = correcta.name;
+
+        if (correcta.type === "radio" && correcta.checked) 
+        {
+            puntaje++;
+        }
+
+        if (correcta.type === "checkbox" && correcta.checked) 
+        {
+            puntaje++;
+        }
+    });
+
+    return puntaje;
+}
