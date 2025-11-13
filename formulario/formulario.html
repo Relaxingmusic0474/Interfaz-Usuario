@@ -1,11 +1,9 @@
-<script>  // Nota: Utilicé el comentario dentro de la etiqueta <script> únicamente porque me es más cómodo comentar de esa forma.
-    /*
+<!--
     Nombre: Pablo Gómez P.
-    Fecha de entrega: 07/11/2025
+    Fecha de entrega: 13/11/2025
     Título del formulario: Formulario de Postulación al INE
     Descripción: Formulario web para postular al Instituto Nacional de Estadísticas (INE) de Chile, con validaciones de campos y un menú de progreso.
-    */
-</script>
+-->
 
 <!DOCTYPE html>
 
@@ -18,27 +16,87 @@
     <style>
         body
         {
-            background: linear-gradient(to bottom, /*#87CEEB*/ #B3EBF2, #FFCEE6);  /* Fondo degradado de azul suave a rosa suave */
+            background: linear-gradient(to bottom, #B3EBF2, #FFCEE6);  /* Fondo degradado de azul suave a rosa suave */
+            background-attachment: fixed;  /* Para que el fondo no se corte al scroll */
+            
+            .opciones-horizontal 
+            {
+                display: flex;
+                flex-wrap: wrap;      /* Para que salten de línea si no caben */
+                gap: 0.8rem;          /* Espacio entre alternativas */
+                align-items: center;
+            }
+
+            .opciones-horizontal label 
+            {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            .breadcrumb 
+            {
+                margin: 1rem 0;
+                font-size: 0.95rem;
+            }
+
+            .breadcrumb span 
+            {
+                padding: 0 0.2rem;
+                color: #0074A6;  /* Color azul suave por defecto para las migas de pan*/
+            }   
+
+            .breadcrumb span.activo  /* Las miga de pan que esté activa se le coloca texto negro en negrita */
+            {
+                font-weight: bold;
+                color: #000;
+            }
+            
+            .form-seccion 
+            {
+                display: none;        /* Por defecto, TODAS ocultas */
+            }
+
+            .form-seccion.activa 
+            {
+                display: block;       /* Solo la que tiene .activa se muestra */
+            }
+
+            html, body 
+            {
+                height: 100%;
+            }
+
+            .boton-grande
+            {
+                padding: 0.4rem 0.8rem;   /* botones más grandes */
+                font-size: 1.1rem;        /* texto ligeramente mayor */
+                border-radius: 8px;        /* más amigable visualmente */
+                border: 2px solid #333;    /* margen claro */
+                cursor: pointer;
+                background-color: #fff;
+                transition: background-color 0.2s ease;
+            }
         }
     </style>
     <script src="scripts/validaciones.js"></script>
+    <script src="scripts/redireccionamiento.js"></script>
 </head>
 
 <body>
-
-    <!-- Menú de progreso -->
-    <nav>
-        <button id="btn1" class="activo" onclick="irA(1)">1 · Datos personales</button>
-        <button id="btn2" onclick="irA(2)">2 · Motivación</button>
-        <button id="btn3" onclick="irA(3)">3 · Quiz final</button>
-    </nav>
+    <div class="breadcrumb" id="breadcrumb">
+        <span id="bc1" class="activo">Datos personales</span>
+        <span>›</span>
+        <span id="bc2">Motivación</span>
+        <span>›</span>
+        <span id="bc3">Quiz final</span>
+    </div>
 
     <h1><u>Formulario de Postulación al INE</u></h1>
 
-    <section id="seccion1">
+    <section id="seccion1" class="form-seccion activa">
         <h2>Sección I: Datos personales</h2>
 
-        <form action="#" method="post" onsubmit="return validarTodo()">  <!-- Llama a la función validarRUT al enviar el formulario -->
+        <form action="#" method="post" onsubmit="return validarTodoSeccion1()">  <!-- Llama a la función validarRUT al enviar el formulario -->
 
             <label for="nombre">Nombre (*):</label><br>
             <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" size="24" required><br><br>
@@ -46,7 +104,7 @@
             <label for="edad">Edad (*):</label><br>
             <input type="number" id="edad" name="edad" min="18" max="120" placeholder="Ej: 24 (debe ser mayor de 18)" size="22" required><br><br>
 
-            <label for="fecha de nacimiento">Fecha de Nacimiento (*):</label><br>
+            <label for="fecha_nacimiento">Fecha de Nacimiento (*):</label><br>
             <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="Ej: 01/01/2001" style="width: 27ch;" required><br><br>
 
             <label for="rut">RUT (*):</label><br>
@@ -55,22 +113,22 @@
             <label for="region">Región de residencia (*):</label><br>
             <select id="region" name="region" required>
                 <option value="">Seleccione su región</option>
-                <option value="">XV. Región de Arica y Parinacota</option>
-                <option value="">I. Región de Tarapacá</option>
-                <option value="">II. Región de Antofagasta</option>
-                <option value="">III. Región de Atacama</option>
-                <option value="">IV. Región de Coquimbo</option>
-                <option value="">V. Región de Valparaíso</option>
-                <option value="">XIII. Región Metropolitana de Santiago</option>
-                <option value="">VI. Región del Libertador Gral Bernardo O'Higgins</option>
-                <option value="">VII. Región del Maule</option>
-                <option value="">XVI. Región del Ñuble</option>
-                <option value="">VIII. Región del Biobío</option>
-                <option value="">IX. Región de La Araucanía</option>
-                <option value="">XIV. Región de Los Ríos</option>
-                <option value="">X. Región de Los Lagos</option>
-                <option value="">XI. Región de Aysén del Gral Carlos Ibáñez del Campo</option>
-                <option value="">XII. Región de Magallanes y de la Antártica Chilena</option>
+                <option value="XV">XV. Región de Arica y Parinacota</option>
+                <option value="I">I. Región de Tarapacá</option>
+                <option value="II">II. Región de Antofagasta</option>
+                <option value="III">III. Región de Atacama</option>
+                <option value="IV">IV. Región de Coquimbo</option>
+                <option value="V">V. Región de Valparaíso</option>
+                <option value="XIII">XIII. Región Metropolitana de Santiago</option>
+                <option value="VI">VI. Región del Libertador Gral Bernardo O'Higgins</option>
+                <option value="VII">VII. Región del Maule</option>
+                <option value="XVI">XVI. Región del Ñuble</option>
+                <option value="VIII">VIII. Región del Biobío</option>
+                <option value="IX">IX. Región de La Araucanía</option>
+                <option value="XIV">XIV. Región de Los Ríos</option>
+                <option value="X">X. Región de Los Lagos</option>
+                <option value="XI">XI. Región de Aysén del Gral Carlos Ibáñez del Campo</option>
+                <option value="XII">XII. Región de Magallanes y de la Antártica Chilena</option>
             </select><br><br>
 
             <label for="email">Correo Electrónico (*):</label><br>
@@ -79,30 +137,85 @@
             <label for="telefono">Teléfono (opcional):</label><br>
             <input type="tel" id="telefono" name="telefono" pattern="^\+56 9 \d{4} \d{4}$" placeholder="Ej: +56 9 1234 5678" size="24"><br><br>
 
+            <label for="web">Sitio web personal o LinkedIn (opcional):</label><br>
+            <input type="url" id="web" name="web" placeholder="Ej: https://miportafolio.cl" size="24"><br><br><br>
+
             <input type="submit" value="Enviar">
+
+            <br><br>
+            
+            <div class="nav-interno" style="text-align: right;">
+                <span></span> 
+                <button type="button" class="boton-grande" onclick="irA(2)">Siguiente ➜</button>
+            </div>
         </form>
     </section>
 
-    <section id="seccion2">
+    <section id="seccion2" class="form-seccion">
         <h2>Sección II: Motivaciones y detalles adicionales</h2>
 
-        <form action="#" method="post">
+        <form action="#" method="post" onsubmit="return validarTodoSeccion2()">
+            <label for="experiencia">¿Cuánto sabe sobre estadística? (*):</label><br>
+            <div class="opciones-horizontal">
+                <label>
+                    <input type="radio" name="qX" value="1" required>
+                    &#160;Nada
+                </label>
 
-            <label for="experiencia">¿Tiene experiencia previa en estadísticas? (*):</label><br>
-            <select id="experiencia" name="experiencia" required>
-                <option value="">Seleccione una opción</option>
-                <option value="si">Sí</option>
-                <option value="no">No</option>
-            </select><br><br>
+                <label>
+                    <input type="radio" name="qX" value="2">
+                    &#160;Algo
+                </label>
+
+                <label>
+                    <input type="radio" name="qX" value="3">
+                    &#160;Bastante
+                </label>
+            </div><br><br>
+
+            <label for="afinidad">¿Cuánto le gusta la estadística?</label><br>
+            <input type="range" id="afinidad" name="afinidad" min="0" max="10" value="5"><br>
+            <small>😒&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;😍</small><br><br><br>
 
             <label for="motivacion">¿Por qué desea postular al INE? (*):</label><br>
             <textarea id="motivacion" name="motivacion" rows="4" cols="50" placeholder="Escriba su motivación aquí..." required></textarea><br><br>
 
+            <label for="disponibilidad">¿En qué horario(s) podría trabajar en caso de que se apruebe su postulación? (*)</label><br>
+            <small>Seleccione al menos uno</small><br>
+
+            <label style="display: flex; align-items: center;">
+                <input type="checkbox" name="horario"> 
+                <p>Mañana (8:00 AM - 12:30 PM)</p>
+            </label>
+
+            <label style="display: flex; align-items: center;">
+                <input type="checkbox" name="horario"> 
+                <p>Tarde (2:00 PM - 6:00 PM)</p>
+            </label>
+
+            <label style="display: flex; align-items: center;">
+                <input type="checkbox" name="horario"> 
+                <p>Noche (7:00 PM - 11:30 PM)</p>
+            </label>
+
+            <br><input type="reset" value="Limpiar">
+            
             <input type="submit" value="Enviar">
+
+            <div class="nav-interno" style="text-align: left;">
+                <span></span> 
+                <button type="button" class="boton-grande" onclick="irA(1)">← Anterior</button>
+            </div>
+
+            <div class="nav-interno" style="text-align: right;">
+                <span></span> 
+                <button type="button" class="boton-grande" onclick="irA(3)"><strong>Siguiente ➜</strong></button>
+            </div>
+
         </form>
     </section>
 
-    <section id="seccion3">
+    <section id="seccion3" class="form-seccion">
         <h2>Sección III: Quiz final de Estadística</h2>
 
         <p>
@@ -151,7 +264,7 @@
                 <label style="display: flex; align-items: center;">
                     <input type="checkbox" name="q2" data-correct="true"> 
                     <span>&#160;B)&#160;&#160;</span>
-                    <p>Aproximadamente solo el 16% de los días dentro de un año, se esperaría tener máximas superiores a 15.7°.</p>
+                    <p>Aproximadamente el 16% de los días dentro de un año, se esperaría tener máximas superiores a 15.7°.</p>
                 </label>
                 <label style="display: flex; align-items: center;">
                     <input type="checkbox" name="q2" data-correct="false"> 
@@ -184,7 +297,7 @@
                 <label style="display: flex; align-items: center;">
                     <input type="radio" name="q3" data-correct="false"> 
                     <span>&#160;C)&#160;&#160;</span>
-                    <p>En tablas hash que emplean arreglos de listas enlazadas, para modelar la probabilidad de que cierto número caiga en un cierto índice del arreglo.</p>
+                    <p>En tablas hash que emplean arreglos de listas enlazadas, para modelar la probabilidad de que cierto número aleatorio caiga en un cierto índice del arreglo.</p>
                 </label>
                 <label style="display: flex; align-items: center;">
                     <input type="radio" name="q3" data-correct="true"> 
@@ -212,7 +325,7 @@
                 <label style="display: flex; align-items: center;">
                     <input type="radio" name="q4" data-correct="true"> 
                     <span>&#160;C)&#160;&#160;</span>
-                    <p>Para analizar y modelar los tiempos en que tarda en producirse el k-ésimo evento Poisson.</p>
+                    <p>Para analizar y modelar los tiempos en que tarda en producirse un k-ésimo evento Poisson.</p>
                 </label>
                 <label style="display: flex; align-items: center;">
                     <input type="radio" name="q4" data-correct="false"> 
@@ -281,15 +394,9 @@
                 <br><input type="reset" value="Limpiar">
             </fieldset>
         </form>
-
-
-
-        
-
-
-
     </section>
     
+    <!--
     <h1>Símbolos matemáticos en HTML</h1>
     <p>A continuación se muestran algunos símbolos matemáticos comunes y su representación en HTML:</p>
     <ul>
@@ -303,5 +410,7 @@
 
         <li>Integral definida: <code>&int;_a^b</code> f(x) dx</li>
     </ul>
+    -->
+
 </body>
 </html>

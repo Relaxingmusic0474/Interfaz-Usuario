@@ -143,8 +143,23 @@ function validarConsistenciaEdadFecha()
     return true; // Permite el envío del formulario
 }
 
+function validacionCheckboxGrupo(name, mensaje) 
+{
+    const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+    const algunoMarcado = [...checkboxes].some(ch => ch.checked);
+
+    if (!algunoMarcado) 
+    {
+        alert(mensaje);
+        return false;
+    }
+
+    return true;
+}
+
+
 /* ---------------------------------------- FUNCIONES PARA VALIDAR TODO ---------------------------------------- */
-function validarTodo()
+function validarTodoSeccion1()
 {
     if (!validarRUToSegfault())
     {
@@ -152,6 +167,16 @@ function validarTodo()
     }
 
     if (!validarConsistenciaEdadFecha())
+    {
+        return false;
+    }
+
+    return true;
+}
+
+function validarTodoSeccion2()
+{
+    if (!validacionCheckboxGrupo("horario", "Debe seleccionar al menos un horario"))
     {
         return false;
     }
