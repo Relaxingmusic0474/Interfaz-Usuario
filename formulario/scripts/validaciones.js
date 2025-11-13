@@ -2,30 +2,46 @@
 function bloquearYSalir(mensaje)  // Funciona como castigo para el usuario que miente en el RUT o la edad
 {
     alert(mensaje);
-    
-    // 1) Intento “legal” de cierre
-    try 
-    {
-        window.open('', '_self');  // Ayuda en algunos navegadores
-        window.close();  // Intenta cerrar la ventana actual para evitar que el usuario rellene el formulario
-    } 
-    catch (e) 
-    {}
 
-    setTimeout(() => {
-    document.body.innerHTML =
-      '<h1>Acceso denegado</h1>' +
-      '<p>Se detectó inconsistencia en los datos declarados. ' +
-      'El formulario ha sido bloqueado.</p>';
-    
-    // Deshabilitar cualquier interacción residual
-    [...document.querySelectorAll('input,select,textarea,button,a')].forEach(el => {
-      el.disabled = true;
-      el.onclick = e => e.preventDefault();
+    localStorage.setItem("bloqueadoINE", "true");
+
+    // Elimina el contenido de la página
+    document.body.innerHTML = 
+    `
+        <h1>Acceso denegado</h1>
+        <p>Se detectó inconsistencia en los datos colocados.  El formulario le ha sido bloqueado.</p>
+        <p>Si cree que se trata de un error, contáctese al teléfono <strong><i>+56 9 7547 6159</i></strong> o al correo <strong><i>andywalls.s17@gmail.com.</i></strong></p>
+    `;
+
+    // Evita interacción
+    document.body.style.pointerEvents = "none";
+
+    // Impide volver atrás
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", function () {
+        history.pushState(null, "", location.href);
     });
-    }, 50);
+
+    // Impede recargar la página original del formulario 
+    history.replaceState(null, "", "acceso_denegado.html");
 
     return false;
+}
+
+// Si el usuario estaba bloqueado, se reemplaza toda la página por la pantalla de bloqueo
+window.onload = function() 
+{
+    localStorage.setItem("bloqueadoINE", "false");   // IMPORTANTE: PARA USARLO EN LA VIDA REAL Y EVITAR CONTRATAR GENTE QUE MIENTE, COMENTAR ESTO
+
+    if (localStorage.getItem("bloqueadoINE") === "true") 
+    {
+        document.body.innerHTML = `
+            <h1>Acceso denegado</h1>
+            <p>Se detectó inconsistencia en los datos colocados. El formulario le ha sido bloqueado.</p>
+            <p>Si cree que se trata de un error, contáctese al teléfono 
+            <b><i>+56 9 7547 6159</i></b> o al correo <b><i>andywalls.s17@gmail.com</i></b>.</p>
+        `;
+    }
 }
 
 /* ---------------------------------------- FUNCIONES PARA VALIDAR RUT ---------------------------------------- */
@@ -34,7 +50,7 @@ function normalizarRut(rut)
     // Convierte el RUT a una cadena de texto
     rut = String(rut);
 
-    // Eliminar puntos y guiones, y convertir a mayúsculas (k != K)
+    // Elimina puntos y guiones, y convierte a mayúsculas (k != K)
     rut = rut.replace(/\./g, "");
     rut = rut.toUpperCase();
 
@@ -48,17 +64,17 @@ function validarRutChileno(rut)
 {
     rut = normalizarRut(rut);
 
-    // Verificar formato básico
+    // Verifica el formato básico
     if (!/^\d{1,8}-[\dK]$/.test(rut)) 
     {
         return false;
     }
 
-    // Separar el cuerpo y el dígito verificador
+    // Separa el cuerpo y el dígito verificador
     const numero = rut.slice(0, -2);
     const dv_teorico = rut.slice(-1);
 
-    // Calcular el dígito verificador
+    // Calcula el dígito verificador
     let multiplicadores = [2, 3, 4, 5, 6, 7];
     let suma = 0;
 
@@ -83,7 +99,7 @@ function validarRutChileno(rut)
         dv_experimental = dv_experimental.toString();
     }
 
-    // Validar el dígito verificador
+    // Valida el dígito verificador
     return dv_experimental === dv_teorico;
 }
 
@@ -94,7 +110,6 @@ function validarRutIngresado()
     
     if (!resultado) 
     {
-        // alert("El RUT es inválido.");
         return false; // Evita el envío del formulario
     }
 
@@ -161,6 +176,19 @@ function validacionCheckboxGrupo(name, mensaje)
 /* ---------------------------------------- FUNCIONES PARA VALIDAR TODO ---------------------------------------- */
 function validarTodoSeccion1()
 {
+    // Valida campos HTML5 de la sección 1
+    const seccion1 = document.getElementById("seccion1");
+    const campos = seccion1.querySelectorAll("input, select, textarea");
+
+    for (const campo of campos) 
+    {
+        if (!campo.checkValidity()) 
+        {
+            campo.reportValidity();   // Muestra el mensaje del navegador
+            return false;
+        }
+    }
+
     if (!validarRUToSegfault())
     {
         return false;
@@ -176,6 +204,19 @@ function validarTodoSeccion1()
 
 function validarTodoSeccion2()
 {
+    // 1) Valida campos HTML5 de la sección 2
+    const seccion2 = document.getElementById("seccion2");
+    const campos = seccion2.querySelectorAll("input, select, textarea");
+
+    for (const campo of campos) 
+    {
+        if (!campo.checkValidity()) 
+        {
+            campo.reportValidity();   // Muestra el mensaje del navegador
+            return false;
+        }
+    }
+
     if (!validacionCheckboxGrupo("horario", "Debe seleccionar al menos un horario"))
     {
         return false;

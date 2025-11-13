@@ -1,13 +1,13 @@
 function irA(paso)
 {
-    // 1) Mostrar SOLO la sección correspondiente
+    // 1) Se muestra solo la información correspondiente
     const secciones = document.querySelectorAll(".form-seccion");
     secciones.forEach((sec, indice) =>
     {
         if (indice === paso - 1) {
-            sec.classList.add("activa");   // la mostramos
+            sec.classList.add("activa");  // Se muestra
         } else {
-            sec.classList.remove("activa"); // la ocultamos
+            sec.classList.remove("activa");  // Se oculta
         }
     });
 
@@ -40,9 +40,35 @@ function irA(paso)
         }
     });
 
-    // 4) (Opcional) Subir un poco la página
+    // 4) Se sube un poco la página
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+}
+
+function siguiente(seccionActual) 
+{
+    switch (seccionActual) 
+    {
+        case 1:
+            if (!validarTodoSeccion1())
+            {
+                return false;
+            }
+            break;
+    
+        case 2:
+            if (!validarTodoSeccion2())
+            {
+                return false;
+            }
+            break;
+
+        default:
+            break;
+    }
+
+    irA(seccionActual+1);  // Si todo está OK, ahora sí se pasa a la otra sección
+    return true;
 }

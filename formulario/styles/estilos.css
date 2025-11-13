@@ -1,0 +1,64 @@
+body 
+{
+    background: linear-gradient(to bottom, #B3EBF2, #FFCEE6);  /* Fondo degradado de azul suave a rosa suave */
+    background-attachment: fixed;
+}
+
+.opciones-horizontal  /* Estilo para las alternativas dispuestas de forma horizontal */
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.opciones-horizontal label 
+{
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumb  /* Estilos para las migas de pan */
+{
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+.breadcrumb span 
+{
+    padding: 0 0.2rem;
+    color: #0074A6;
+}
+
+.breadcrumb span.activo 
+{
+    font-weight: bold;
+    color: #000;
+}
+
+.form-seccion 
+{
+    display: none;
+}
+
+.form-seccion.activa 
+{
+    display: block;
+}
+
+.boton-grande 
+{
+    padding: 0.3rem 0.5rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 2px solid #333;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.boton-grande:hover 
+{
+    background-color: cadetblue;
+    color: white;
+}
