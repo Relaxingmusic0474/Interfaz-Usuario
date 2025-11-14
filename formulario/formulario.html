@@ -25,6 +25,8 @@
         <span id="bc2">Motivación</span>
         <span>›</span>
         <span id="bc3">Quiz final</span>
+        <span>›</span>
+        <span id="bc4">Resultados</span>
     </div>
 
     <h1><u>Formulario de Postulación al INE</u></h1>
@@ -70,13 +72,14 @@
             <label for="email">Correo Electrónico (*):</label><br>
             <input type="email" id="email" name="email" placeholder="Ej: juan.perez@gmail.com" size="24" required><br><br>
 
+            <label for="contrasenha">Contraseña que utilizará en la página del INE (*):</label><br>
+            <input type="password" id="contrasenha" name="contrasenha" minlength="8" placeholder="Ej: holi1234" size="24" required><br><br>
+            
             <label for="telefono">Teléfono (opcional):</label><br>
             <input type="tel" id="telefono" name="telefono" pattern="^\+56 9 \d{4} \d{4}$" placeholder="Ej: +56 9 1234 5678" size="24"><br><br>
 
             <label for="web">Sitio web personal o LinkedIn (opcional):</label><br>
-            <input type="url" id="web" name="web" placeholder="Ej: https://miportafolio.cl" size="24">
-
-            <br><br><br><br>
+            <input type="url" id="web" name="web" placeholder="Ej: https://miportafolio.cl" size="24"><br><br><br>
             
             <div class="nav-interno" style="text-align: right;">
                 <span></span> 
@@ -88,7 +91,7 @@
     <section id="seccion2" class="form-seccion">
         <h2>Sección II: Motivaciones y detalles adicionales</h2>
 
-        <form action="#" method="post" onsubmit="return validarTodoSeccion2()">
+        <form action="#" method="post">
             <label for="experiencia">¿Cuánto sabe sobre estadística? (*):</label><br>
             <div class="opciones-horizontal">
                 <label>
@@ -112,7 +115,7 @@
             <small>😒&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;😍</small><br><br><br>
 
             <label for="motivacion">¿Por qué desea postular al INE? (*):</label><br>
-            <textarea id="motivacion" name="motivacion" rows="4" cols="50" placeholder="Escriba su motivación aquí..." required></textarea><br><br><br>
+            <textarea id="motivacion" name="motivacion" rows="4" cols="50" placeholder="Escriba su motivación aquí (sea serio, ya que esto influirá en el resultado de su postulación)..." required></textarea><br><br><br>
 
             <label for="disponibilidad">¿En qué horario(s) podría trabajar en caso de que se apruebe su postulación? (*)</label><br>
             <small>Seleccione al menos uno</small><br>
@@ -132,7 +135,7 @@
                 <p>Noche (7:00 PM - 11:30 PM)</p>
             </label>
 
-            <br><br>
+            <br><br><br><br>
 
             <div class="nav-interno" style="display: flex; justify-content: space-between;">
                 <button type="button" class="boton-grande" onclick="irA(1)">← Anterior</button>
@@ -442,9 +445,37 @@
             </fieldset>
         </form>
 
+        <br><hr class="delgada">
+
+
+        <form onsubmit="return evaluarPostulacion();">
+            <div class="nav-interno" style="text-align: center;">
+                <button type="submit" class="boton-grande boton-enviar">Enviar respuestas y finalizar postulación</button>
+            </div>
+        </form>
+
+        <hr class="delgada">
+
         <div class="nav-interno" style="text-align: left;">
             <span></span> 
             <button type="button" class="boton-grande" onclick="irA(2)">← Anterior</button>
+        </div>
+    </section>
+
+    <section id="seccion4" class="form-seccion">
+        <h2>Resultado de tu postulación</h2>
+
+        <div id="resultadoPostulacion" class="resultado-postulacion" 
+            style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 10px; border: 1px solid #ddd;">
+            <!-- Aquí se insertará el resultado dinámicamente -->
+        </div>
+
+        <br>
+
+        <div class="nav-interno" style="text-align: center;">
+            <button type="button" class="boton-grande" onclick="reiniciarFormulario()" >  <!-- Se hizo un botón de tipo submit para que el formulario se vacíe al volver a inicio -->
+                Volver al inicio
+            </button>
         </div>
     </section>
 </body>

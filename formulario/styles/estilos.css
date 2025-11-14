@@ -62,3 +62,15 @@ body
     background-color: cadetblue;
     color: white;
 }
+
+.boton-enviar:hover
+{
+    background-color: red;
+}
+
+hr.delgada  /* Para las líneas horizontales delgadas */
+{
+    border: none;
+    height: 1px;
+    background-color: #999;
+  }

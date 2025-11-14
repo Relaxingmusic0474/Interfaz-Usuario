@@ -4,9 +4,13 @@ function irA(paso)
     const secciones = document.querySelectorAll(".form-seccion");
     secciones.forEach((sec, indice) =>
     {
-        if (indice === paso - 1) {
+        if (indice === paso - 1) 
+        {
             sec.classList.add("activa");  // Se muestra
-        } else {
+        } 
+        
+        else 
+        {
             sec.classList.remove("activa");  // Se oculta
         }
     });
@@ -15,9 +19,13 @@ function irA(paso)
     const botones = document.querySelectorAll("nav button");
     botones.forEach((btn, indice) =>
     {
-        if (indice === paso - 1) {
+        if (indice === paso - 1) 
+        {
             btn.classList.add("activo");
-        } else {
+        } 
+    
+        else 
+        {
             btn.classList.remove("activo");
         }
     });
@@ -26,15 +34,21 @@ function irA(paso)
     const bc = [
         document.getElementById("bc1"),
         document.getElementById("bc2"),
-        document.getElementById("bc3")
+        document.getElementById("bc3"),
+        document.getElementById("bc4")
     ];
 
     bc.forEach((link, i) =>
     {
-        if (link) {
-            if (i === paso - 1) {
+        if (link) 
+        {
+            if (i === paso - 1) 
+            {
                 link.classList.add("activo");
-            } else {
+            } 
+            
+            else 
+            {
                 link.classList.remove("activo");
             }
         }
@@ -64,6 +78,9 @@ function siguiente(seccionActual)
                 return false;
             }
             break;
+        
+        case 3:
+            break;
 
         default:
             break;
@@ -73,27 +90,14 @@ function siguiente(seccionActual)
     return true;
 }
 
-// PARA CALCULAR PUNTAJE DEL QUIZ (SECCIÓN 3)
-function calcularPuntajeQuiz() 
+function reiniciarFormulario() 
 {
-    let puntaje = 0;
+    // 1) Se limpian TODOS los formularios del documento
+    document.querySelectorAll("form").forEach(form => form.reset());
 
-    // Se seleccionan todos los inputs marcados como correctos
-    const respuestasCorrectas = document.querySelectorAll("input[data-correct='true']");
+    // 2) Se vuelve a la sección 1
+    irA(1);
 
-    respuestasCorrectas.forEach(correcta => {
-        const name = correcta.name;
-
-        if (correcta.type === "radio" && correcta.checked) 
-        {
-            puntaje++;
-        }
-
-        if (correcta.type === "checkbox" && correcta.checked) 
-        {
-            puntaje++;
-        }
-    });
-
-    return puntaje;
+    // 3) Se sube al tope
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
